@@ -89,12 +89,13 @@ document.querySelector('.b-6').addEventListener('click', makeSix);
 //Создайте функцию makeSeven, которая делает запрос на адрес https://api.agify.io/. Выведите в консоль ответ с сервера, чтобы убедиться, что получили данные.
 
 function makeSeven() {
-	fetch('https://api.agify.io/')
-	.then((res)=>{
-		console.log(res)
-	})
-	.catch((error)=>{
-		console.log(`Ошибка`)
+    fetch('https://api.agify.io/')
+    .then(response => response.json())
+    .then(data => {
+        console.log(data);
+    })
+    .catch((error)=>{
+		console.log(`Ошибка`);
 	})
 }
 
