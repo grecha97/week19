@@ -6,6 +6,9 @@ function makeOne() {
 	.then ((res) => {
 		console.log(res)
 	})
+	.catch((error)=> {
+		console.log(`Ошибка!`)
+	})
 }
 
 document.querySelector('.b-1').addEventListener('click', makeOne);
@@ -17,9 +20,11 @@ function makeTwo() {
 	fetch('https://emojihub.yurace.pro/api/random/group/face-positive')
 	.then(res => res.json())
 	.then(data => {
-		let htmlCode = data.htmlCode;
 		const resultElement = document.getElementById('result2');
-		resultElement.textContent = htmlCode;
+		resultElement.textContent = data.htmlCode;
+	})
+	.catch((error)=> {
+		console.log(`Ошибка!`)
 	})
 }
 
@@ -47,8 +52,7 @@ function makeFour() {
 	fetch('https://www.boredapi.com/api/activity')
 	.then(res => res.json())
 	.then((data)=>{
-		let activity = data.activity;
-		console.log(`Activity: ${activity}`);
+		console.log(`Activity: ${data.activity}`);
 	})
 	.catch((error) =>{
 		console.log(`Ошибка`);
@@ -64,8 +68,10 @@ function makeFive() {
 	fetch('https://www.boredapi.com/api/activity')
 	.then(res => res.json())
 	.then((data)=>{
-		let participants = data.participants;
-		console.log(`Количество участников: ${participants}`)
+		console.log(`Количество участников: ${data.participants}`)
+	})
+	.catch((error)=> {
+		console.log(`Ошибка!`)
 	})
 }
 
@@ -78,8 +84,10 @@ function makeSix() {
 	fetch(' https://www.boredapi.com/api/activity')
 	.then(res => res.json())
 	.then((data)=>{
-		let dataTaskSix = data;
-		console.log(dataTaskSix);
+		console.log(data);
+	})
+	.catch((error)=> {
+		console.log(`Ошибка!`)
 	})
 }
 
@@ -143,9 +151,8 @@ function makeTen() {
 	.then(res => res.json())
 	.then((data) =>{
 		resultElement = document.getElementById('result10')
-		let message = data.message;
 		let img = document.createElement('img');
-		img.src = message;
+		img.src = data.message;
 		resultElement.appendChild(img);
 	})
 }
@@ -207,10 +214,8 @@ function makeFourteen() {
 	fetch('https://official-joke-api.appspot.com/random_joke')
 		.then((response) => response.json())
 		.then((data) => {
-			let setup = data.setup;
-			let punchline = data.punchline;
 			let resultElement = document.getElementById('result14');
-			resultElement.innerHTML = `${setup} - ${punchline}`;
+			resultElement.innerHTML = `${data.setup} - ${data.punchline}`;
 		})
 		.catch((error) => console.error('Ошибка:', error));
 }
